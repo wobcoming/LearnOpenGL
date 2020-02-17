@@ -37,3 +37,5 @@ LearnOpenGL/LearnOpenGL/Debug/
 *.sln
 *.vcxproj.*
 *.vcxproj
+LearnOpenGL/LearnOpenGL/x64/
+LearnOpenGL/x64/
