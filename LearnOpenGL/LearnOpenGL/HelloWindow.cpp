@@ -9,6 +9,13 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 	glViewport(0, 0, width, height);
 }
 
+/** input control in GLFW */
+void processInput(GLFWwindow* window)
+{
+	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+		glfwSetWindowShouldClose(window, true);
+}
+
 int main()
 {
 	/**
@@ -72,6 +79,20 @@ int main()
 		/** BEGIN RENDER LOOP */
 		while (!glfwWindowShouldClose(window))
 		{
+			/** check input	*/
+			processInput(window);
+
+			// clear color before render
+			/**
+			*	glClearColor sets the colorm value that OpenGL uses to reset the colorbuffer.
+			*	As soon as glClear or glClearBuffer is called, it used the value from glClearColor to reset its color values
+			*/
+			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+			// the possible bit we cant set are GL_COLOR_BUFFER_BIT, GL_DEPTH_BUFFER_BIT and GL_STENCIL_BUFFER_BIT
+			glClear(GL_COLOR_BUFFER_BIT);
+
+			// glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
+			// -------------------------------------------------------------------------------
 			glfwSwapBuffers(window);
 
 			/**
